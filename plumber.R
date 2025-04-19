@@ -31,7 +31,7 @@ function(req, res) {
 #* @post /score
 
 
-function(age_at_diagnosis, hemoglobin, platelets, herythroproietin, pnh_clone, telomere_length=NULL) {
+function(age_at_diagnosis, hemoglobin, platelets, herythroproietin, pnh_clone, telomere_length) {
   
   # Type conversion
   age_at_diagnosis <- as.numeric(age_at_diagnosis)
@@ -40,7 +40,7 @@ function(age_at_diagnosis, hemoglobin, platelets, herythroproietin, pnh_clone, t
   herythroproietin <- as.numeric(herythroproietin)
   
   
-  if(telomere_length=="Missing"){
+  if(telomere_length=="Not Available"){
     # Calculate Score Card without TL
     score <- 18 + ifelse(age_at_diagnosis < 47, -2, 4) +
       ifelse(hemoglobin < 10.8, 1, -1) +
